@@ -1,0 +1,10 @@
+USE smbs;
+CREATE TABLE Products (
+    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    ProductName VARCHAR(255) NOT NULL,
+    Category VARCHAR(100),
+    Price DECIMAL(10,2) NOT NULL,
+    StockQuantity INT NOT NULL,
+    Discount DECIMAL(5,2) DEFAULT 0,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

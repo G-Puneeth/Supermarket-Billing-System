@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Page - Supermarket Billing</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
+        main {
+            padding: 2em;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        main h3 {
+            margin-bottom: 10px;
+        }
+
+        main section {
+            margin-top: 20px;
+        }
+
+        main button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        main button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #e9ecef;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Welcome to Supermarket</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">View Products</a></li>
+                <li><a href="promo_discounts.html">Promo Discounts</a></li>
+                <li><a href="cart.html">Shopping Cart</a></li>
+                <li><a href="purchase_history.html">Purchase History</a></li>
+                <li><a href="membership.html">Membership Details</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h3>Hello, Customer!</h3>
+        <p>Explore our products and manage your purchases.</p>
+
+        <section>
+            <h4>Quick Access</h4>
+            <button onclick="location.href='products.html'">Browse Products</button>
+            <button onclick="location.href='promo_discounts.html'">View Discounts</button>
+            <button onclick="location.href='purchase_history.html'">View Past Purchases</button>
+            <button onclick="location.href='membership.html'">Check Membership Status</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Supermarket Billing System</p>
+    </footer>
+</body>
+</html>

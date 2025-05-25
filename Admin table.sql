@@ -1,0 +1,8 @@
+USE smbs;
+CREATE TABLE AdminUsers (
+    AdminID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) UNIQUE NOT NULL,
+    PasswordHash VARCHAR(255) NOT NULL,
+    Role ENUM('Admin', 'Manager') DEFAULT 'Admin',
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermarket Billing System</title>
+    <style>
+        /* ... (Your existing CSS styles here) ... */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+        }
+
+        .banner, .dashboard, .features {
+            text-align: center;
+            padding: 2em;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner h2 {
+            margin-bottom: 10px;
+        }
+
+        .banner button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .banner button:hover {
+            background-color: #218838;
+        }
+
+        .dashboard .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #e9ecef;
+            border-top: 1px solid #dee2e6;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Supermarket Billing System</h1>
+        <nav>
+            <ul>
+                <li><a href="Smb.html">Home</a></li>
+                <li><a href="#" onclick="authenticate('billing')">Billing</a></li>
+                <li><a href="#" onclick="authenticate('reports')">Sales Reports</a></li>
+                <li><a href="#" onclick="authenticate('products')">Products</a></li>
+                <li><a href="Customer.html" onclick="authenticate('customers')">Customers</a></li>
+                <li><a href="Admin.html" onclick="checkAdminAuthentication('admin')">Admin Panel</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="banner">
+        <h2>Welcome to Our Supermarket Billing System</h2>
+        <p>Simplify your transactions and track sales with ease.</p>
+        <button onclick="authenticate('billing')">Special Offers</button>
+        <button onclick="authenticate('reports')">View Sales Reports</button>
+    </section>
+    
+    <section class="dashboard">
+        <h2>Dashboard</h2>
+        <div class="stats">
+            <div>Total Sales Today: <span id="sales">$0</span></div>
+            <div>Transactions: <span id="transactions">0</span></div>
+            <div>Customers Served: <span id="customersServed">0</span></div>
+        </div>
+    </section>
+    
+    <section class="features">
+        <h2>Why Use Our Billing System?</h2>
+        <ul>
+            <li>✅ Fast & Easy Billing</li>
+            <li>✅ Discount & Tax Calculation</li>
+            <li>✅ Customer & Product Management</li>
+            <li>✅ Sales Analysis</li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Supermarket Billing System | Contact: +91 12345 67890</p>
+    </footer>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Authentication</h2>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <button onclick="performAuthentication()">Submit</button>
+        </div>
+    </div>
+    
+    <script>
+        let targetPage;
+
+        function authenticate(page) {
+            targetPage = page;
+            document.getElementById('authModal').style.display = 'block';
+        }
+        
+        function checkAdminAuthentication() {
+                authenticate('admin');
+        }
+        function performAuthentication() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Replace with your actual authentication logic
+            if (username === 'admin' && password === '12345') {
+                if (targetPage === 'billing') {
+                    // Redirect to billing page only if admin
+                    alert('Redirecting to billing page...');
+                    // window.location.href = 'billing.html';
+                } else {
+                    alert(`Redirecting to ${targetPage} page...`);
+                    // window.location.href = `${targetPage}.html`;
+                }
+                closeModal();
+            } else if (username === 'customer' && password === 'customer') {
+                if (targetPage !== 'billing') {
+                    alert(`Redirecting to ${targetPage} page...`);
+                    // window.location.href = `${targetPage}.html`;
+                    closeModal();
+                } else {
+                    alert('Customers are not allowed to access the billing page.');
+                    closeModal();
+                }
+            } else {
+                alert('Authentication failed.');
+            }
+        }
+
+        function closeLogoutModal() {
+            document.getElementById('logoutModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
